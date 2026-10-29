@@ -1,0 +1,162 @@
+.screen--game {
+  height: 100dvh;
+  padding: 10px 14px;
+  gap: 8px;
+  max-width: 1360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.hud-top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.hud-top__left,
+.hud-top__right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hud-top__title {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hud-top__num {
+  font-weight: 900;
+  padding: 2px 8px;
+  background: var(--accent-gold);
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.hud-top__name {
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+
+.instruction-strip {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--bg-paper);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.instruction-strip__hint {
+  color: #8a5200;
+  background: #fff1c2;
+  padding: 2px 8px;
+  border-radius: 6px;
+}
+
+.playfield-wrap {
+  position: relative;
+  flex: 1;
+  min-height: 220px;
+  background: var(--bg-paper);
+  border: 3px solid var(--border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-offset);
+  overflow: hidden;
+}
+
+.playfield-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.hud-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.budget {
+  flex: 1 1 240px;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.9rem;
+}
+
+.budget__labels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.budget__bar {
+  height: 12px;
+  background: #e4dac8;
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.budget__fill {
+  height: 100%;
+  background: var(--accent-primary);
+  transition: width var(--transition);
+}
+
+.budget--low .budget__fill {
+  background: var(--danger);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.help-list {
+  text-align: left;
+  padding-left: 20px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.error-pre {
+  font-family: monospace;
+  white-space: pre-wrap;
+  text-align: left;
+}
+
+@media (max-width: 680px) {
+  .screen--game {
+    padding: 8px;
+  }
+  .hud-bottom {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .budget {
+    max-width: none;
+  }
+  .controls {
+    justify-content: space-between;
+  }
+}
+

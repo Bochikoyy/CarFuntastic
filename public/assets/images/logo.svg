@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" role="img" aria-label="Carfuntastic">
+  <path d="M20 112 C 120 84, 220 132, 320 104 S 440 96, 462 100" stroke="#2b2b2b" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <g transform="translate(378 34)">
+    <rect x="0" y="22" width="78" height="30" rx="12" fill="#ff5a3c" stroke="#2b2b2b" stroke-width="5"/>
+    <path d="M16 24 L28 6 H52 L64 24" fill="#8fd3ff" stroke="#2b2b2b" stroke-width="5" stroke-linejoin="round"/>
+    <circle cx="18" cy="54" r="12" fill="#2b2b2b"/>
+    <circle cx="60" cy="54" r="12" fill="#2b2b2b"/>
+    <circle cx="18" cy="54" r="4" fill="#fff8ec"/>
+    <circle cx="60" cy="54" r="4" fill="#fff8ec"/>
+  </g>
+  <text x="22" y="82" font-family="'Trebuchet MS', 'Segoe UI', system-ui, sans-serif" font-size="50" font-weight="800" fill="#2b2b2b" letter-spacing="-1" textLength="340" lengthAdjust="spacingAndGlyphs">Carfuntastic</text>
+</svg>
