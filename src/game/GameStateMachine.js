@@ -49,4 +49,3 @@ export class GameStateMachine {
     return this.state === GAME_STATES.WON || this.state === GAME_STATES.FAILED;
   }
 }
-

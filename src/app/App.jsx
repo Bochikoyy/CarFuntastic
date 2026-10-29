@@ -38,6 +38,8 @@ export function App() {
       {route.screen === SCREENS.TITLE && (
         <TitleScreen
           progress={progress}
+          settings={settings}
+          onSelectCar={(carId) => updateSettings({ carId })}
           onPlay={() => navigate({ screen: SCREENS.GAME, levelNumber: 1 })}
           onContinue={() => navigate({ screen: SCREENS.GAME, levelNumber: progress.unlockedLevel })}
           onLevelSelect={() => navigate({ screen: SCREENS.LEVEL_SELECT })}
@@ -66,6 +68,7 @@ export function App() {
         <GameScreen
           levelNumber={activeLevel}
           settings={settings}
+          onSelectCar={(carId) => updateSettings({ carId })}
           onToggleMute={() => updateSettings({ muted: !settings.muted })}
           onWin={recordWin}
           onNextLevel={() => navigate({ screen: SCREENS.GAME, levelNumber: activeLevel + 1 })}

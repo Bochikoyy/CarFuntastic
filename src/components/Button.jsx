@@ -16,4 +16,3 @@ export function Button({
     </button>
   );
 }
-

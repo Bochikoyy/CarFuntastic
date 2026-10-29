@@ -58,13 +58,21 @@ describe('progressStore and settingsStore', () => {
     expect(settings.load().muted).toBe(true);
   });
 
-  it('sanitizes invalid settings payloads', () => {
+  it('sanitizes invalid settings payloads and persists valid carId choices', () => {
     const settings = createSettingsStore(
       memoryStorage({
-        [SETTINGS_STORAGE_KEY]: JSON.stringify({ muted: 'yes', reducedMotion: 42 }),
+        [SETTINGS_STORAGE_KEY]: JSON.stringify({
+          muted: 'yes',
+          reducedMotion: 42,
+          carId: 'not-a-real-car',
+        }),
       }),
     );
     expect(settings.load().muted).toBe(false);
     expect(typeof settings.load().reducedMotion).toBe('boolean');
+    expect(settings.load().carId).toBe('polestar-2');
+
+    settings.update({ carId: 'm4-gt' });
+    expect(settings.load().carId).toBe('m4-gt');
   });
 });

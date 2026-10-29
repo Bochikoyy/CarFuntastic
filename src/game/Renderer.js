@@ -1,4 +1,5 @@
-import { RENDER, ROAD, TERRAIN, VEHICLE } from './constants.js';
+import { RENDER, ROAD, TERRAIN } from './constants.js';
+import { DEFAULT_CAR_ID, drawCarModel } from './CarCatalog.js';
 import { rectBounds } from '../utils/geometry.js';
 
 const PALETTE = Object.freeze({
@@ -12,9 +13,6 @@ const PALETTE = Object.freeze({
   roadStripe: '#ffd166',
   preview: '#4a4a4a',
   previewBlocked: '#e63946',
-  carBody: '#ff5a3c',
-  carRoof: '#8fd3ff',
-  carHub: '#fff8ec',
   goalGlow: 'rgba(56, 176, 0, 0.14)',
   goalFlag: '#ffbe0b',
   hazard: '#e63946',
@@ -29,12 +27,17 @@ const PALETTE = Object.freeze({
  * preview stroke and physics bodies; it never mutates physics state.
  */
 export class Renderer {
-  constructor(canvas, camera, { debug = false } = {}) {
+  constructor(canvas, camera, { debug = false, carId = DEFAULT_CAR_ID } = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.camera = camera;
     this.debug = debug;
+    this.carId = carId;
     this.dpr = 1;
+  }
+
+  setCarId(carId) {
+    this.carId = carId || DEFAULT_CAR_ID;
   }
 
   resize() {
@@ -366,46 +369,8 @@ export class Renderer {
     ctx.restore();
   }
 
-  _drawVehicle({ chassis, wheels }) {
-    const { ctx } = this;
-    const w = VEHICLE.chassisWidth;
-    const h = VEHICLE.chassisHeight;
-
-    ctx.save();
-    ctx.translate(chassis.x, chassis.y);
-    ctx.rotate(chassis.angle);
-    ctx.fillStyle = PALETTE.carRoof;
-    ctx.strokeStyle = PALETTE.ink;
-    ctx.lineWidth = 3;
-    ctx.beginPath();
-    ctx.roundRect(-w * 0.22, -h * 0.95, w * 0.5, h * 0.65, 5);
-    ctx.fill();
-    ctx.stroke();
-
-    ctx.fillStyle = PALETTE.carBody;
-    ctx.beginPath();
-    ctx.roundRect(-w / 2, -h / 2, w, h, 6);
-    ctx.fill();
-    ctx.stroke();
-    ctx.restore();
-
-    for (const wheel of wheels) {
-      ctx.save();
-      ctx.translate(wheel.x, wheel.y);
-      ctx.rotate(wheel.angle);
-      ctx.fillStyle = PALETTE.ink;
-      ctx.beginPath();
-      ctx.arc(0, 0, wheel.radius, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = PALETTE.carHub;
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.arc(0, 0, wheel.radius * 0.38, 0, Math.PI * 2);
-      ctx.moveTo(0, 0);
-      ctx.lineTo(wheel.radius * 0.85, 0);
-      ctx.stroke();
-      ctx.restore();
-    }
+  _drawVehicle(renderState) {
+    drawCarModel(this.ctx, renderState, this.carId);
   }
 
   _drawDebug(bodies) {
@@ -425,4 +390,3 @@ export class Renderer {
     ctx.restore();
   }
 }
-

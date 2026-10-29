@@ -20,4 +20,3 @@ export function useProgress() {
 
   return { progress, settings, recordWin, resetProgress, updateSettings };
 }
-

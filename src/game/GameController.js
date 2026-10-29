@@ -1,3 +1,4 @@
+import { DEFAULT_CAR_ID } from './CarCatalog.js';
 import { MAX_STEPS_PER_FRAME, STEP_MS } from './constants.js';
 import { AudioManager } from './AudioManager.js';
 import { Camera } from './Camera.js';
@@ -16,13 +17,13 @@ import { Renderer } from './Renderer.js';
  * rendering and coarse UI notifications. React talks only to this public API.
  */
 export class GameController {
-  constructor(canvas, { muted = false, debug = false, onWin } = {}) {
+  constructor(canvas, { muted = false, debug = false, carId = DEFAULT_CAR_ID, onWin } = {}) {
     this.canvas = canvas;
     this.onWin = onWin;
     this.listeners = new Set();
     this.stateMachine = new GameStateMachine(GAME_STATES.LOADING);
     this.camera = new Camera();
-    this.renderer = new Renderer(canvas, this.camera, { debug });
+    this.renderer = new Renderer(canvas, this.camera, { debug, carId });
     this.audio = new AudioManager({ muted });
 
     this.level = null;
@@ -182,6 +183,10 @@ export class GameController {
     this.audio.setMuted(muted);
   }
 
+  setCarId(carId) {
+    this.renderer.setCarId(carId);
+  }
+
   _beginStroke(point) {
     if (this.stateMachine.state !== GAME_STATES.READY) return false;
     const res = this.drawing.begin(point);
@@ -309,4 +314,3 @@ export class GameController {
     this.listeners.clear();
   }
 }
-

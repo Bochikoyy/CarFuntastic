@@ -37,4 +37,3 @@ export function buildHash(route) {
       return '#/404';
   }
 }
-

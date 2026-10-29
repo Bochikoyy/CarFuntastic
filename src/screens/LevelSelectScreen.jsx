@@ -46,4 +46,3 @@ export function LevelSelectScreen({ progress, onSelectLevel, onBack }) {
     </main>
   );
 }
-

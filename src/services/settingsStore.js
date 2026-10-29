@@ -1,3 +1,5 @@
+import { CAR_IDS, DEFAULT_CAR_ID } from '../game/CarCatalog.js';
+
 export const SETTINGS_STORAGE_KEY = 'carfuntastic:settings:v1';
 
 export function defaultSettings() {
@@ -8,6 +10,7 @@ export function defaultSettings() {
     version: 1,
     muted: false,
     reducedMotion: Boolean(prefersReduced),
+    carId: DEFAULT_CAR_ID,
   };
 }
 
@@ -18,6 +21,7 @@ export function sanitizeSettings(raw) {
     version: 1,
     muted: typeof raw.muted === 'boolean' ? raw.muted : base.muted,
     reducedMotion: typeof raw.reducedMotion === 'boolean' ? raw.reducedMotion : base.reducedMotion,
+    carId: typeof raw.carId === 'string' && CAR_IDS.includes(raw.carId) ? raw.carId : base.carId,
   };
 }
 
@@ -53,4 +57,3 @@ export function createSettingsStore(storage = globalThis.localStorage) {
 }
 
 export const settingsStore = createSettingsStore();
-

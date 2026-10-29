@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 48" role="img" aria-label="Carfuntastic Fastback Sedan">
+  <g transform="translate(48 28)">
+    <!-- Shark-fin antenna -->
+    <polygon points="-14,-19 -9,-23 -7,-19" fill="#262626"/>
+    <!-- White fastback body -->
+    <path d="M-38,10 L-39,3 L-37,-6 L-33,-8 Q-21,-19 -11,-19.5 Q3,-20 11,-17 L22,-8 Q31,-6 38,-3 L39,5 L40,10 Z"
+          fill="#ffffff" stroke="#2b2b2b" stroke-width="2.5" stroke-linejoin="round"/>
+    <!-- Rocker / splitter / diffuser trim -->
+    <path d="M-38,10 L-39,6 L-31,7.5 L33,7.5 L40,7.5 L40,10 Z" fill="#262626"/>
+    <!-- Greenhouse windows -->
+    <path d="M-23,-8.5 Q-16,-17 -9,-17.5 Q3,-18 10,-15.5 L19,-8.5 Z" fill="#262626"/>
+    <path d="M-21,-9 Q-15,-15.5 -9,-16 L-3,-16 L-4,-9 Z" fill="#383d44"/>
+    <path d="M-1.5,-16 Q4,-16 9,-14.5 L17,-9 L-2,-9 Z" fill="#525860"/>
+    <!-- Taillight & headlight -->
+    <polygon points="-37,-6 -30,-5.5 -31,-2 -37.5,-2" fill="#d62828" stroke="#2b2b2b" stroke-width="1"/>
+    <polygon points="29,-4.5 37.5,-3 36.5,-0.5 31,-1.5" fill="#e8f1f8" stroke="#2b2b2b" stroke-width="1"/>
+    <!-- Side mirror -->
+    <ellipse cx="14" cy="-9.5" rx="3" ry="1.8" fill="#ffffff" stroke="#2b2b2b" stroke-width="1.5"/>
+    <!-- Wheels -->
+    <g transform="translate(-23 11)">
+      <circle r="11" fill="#1b1b1b" stroke="#2b2b2b" stroke-width="1.5"/>
+      <circle r="8" fill="#2d3136" stroke="#d4d8dd" stroke-width="1.5"/>
+      <circle r="2.2" fill="#1b1b1b" stroke="#d4d8dd" stroke-width="1"/>
+    </g>
+    <g transform="translate(23 11)">
+      <circle r="11" fill="#1b1b1b" stroke="#2b2b2b" stroke-width="1.5"/>
+      <circle r="8" fill="#2d3136" stroke="#d4d8dd" stroke-width="1.5"/>
+      <circle r="2.2" fill="#1b1b1b" stroke="#d4d8dd" stroke-width="1"/>
+    </g>
+  </g>
+</svg>
+

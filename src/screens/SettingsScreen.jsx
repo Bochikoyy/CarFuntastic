@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Button } from '../components/Button.jsx';
+import { CarPicker } from '../components/CarPicker.jsx';
 import { Toggle } from '../components/Toggle.jsx';
 
 export function SettingsScreen({ settings, onUpdateSettings, onResetProgress, onBack }) {
@@ -12,8 +13,16 @@ export function SettingsScreen({ settings, onUpdateSettings, onResetProgress, on
           <Button variant="ghost" onClick={onBack}>
             ← Back
           </Button>
-          <h1>Settings</h1>
+          <h1>Settings & Garage</h1>
         </header>
+
+        <div className="panel__section">
+          <h2>Choose Your Car</h2>
+          <CarPicker
+            selectedCarId={settings.carId}
+            onSelectCar={(carId) => onUpdateSettings({ carId })}
+          />
+        </div>
 
         <div className="panel__section">
           <Toggle
@@ -59,4 +68,3 @@ export function SettingsScreen({ settings, onUpdateSettings, onResetProgress, on
     </main>
   );
 }
-

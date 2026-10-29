@@ -8,4 +8,3 @@ export function Modal({ title, children, tone = 'neutral' }) {
     </div>
   );
 }
-

@@ -24,4 +24,3 @@ export function LevelTile({ level, unlocked, completed, stars, onSelect }) {
     </button>
   );
 }
-

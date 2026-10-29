@@ -6,7 +6,7 @@ import { GameController } from '../game/GameController.js';
  * active `levelNumber` and `muted` setting, and mirrors coarse HUD snapshots
  * into React state. Strict-Mode safe: cleanup disposes the controller cleanly.
  */
-export function useGameController(canvasRef, { levelNumber, muted, onWin }) {
+export function useGameController(canvasRef, { levelNumber, muted, carId, onWin }) {
   const controllerRef = useRef(null);
   const onWinRef = useRef(onWin);
   const [snapshot, setSnapshot] = useState(null);
@@ -25,6 +25,7 @@ export function useGameController(canvasRef, { levelNumber, muted, onWin }) {
     try {
       controller = new GameController(canvas, {
         muted,
+        carId,
         debug,
         onWin: (info) => onWinRef.current?.(info),
       });
@@ -45,13 +46,17 @@ export function useGameController(canvasRef, { levelNumber, muted, onWin }) {
       controller?.dispose();
       controllerRef.current = null;
     };
-    // `muted` is updated via a dedicated effect so toggling sound does not reset the level.
+    // `muted` and `carId` are updated via dedicated effects so changing them does not reset the level.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [canvasRef, levelNumber]);
 
   useEffect(() => {
     controllerRef.current?.setMuted(muted);
   }, [muted]);
+
+  useEffect(() => {
+    controllerRef.current?.setCarId(carId);
+  }, [carId]);
 
   return {
     snapshot,

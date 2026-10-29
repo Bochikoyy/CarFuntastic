@@ -112,4 +112,3 @@ describe('RoadGeometry', () => {
     expect(world.y).toBeCloseTo(360, 5);
   });
 });
-

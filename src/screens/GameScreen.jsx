@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import { Button } from '../components/Button.jsx';
+import { CarPicker } from '../components/CarPicker.jsx';
 import { Modal } from '../components/Modal.jsx';
 import { ProgressStars } from '../components/ProgressStars.jsx';
+import { getCarById } from '../game/CarCatalog.js';
 import { DRAWING } from '../game/constants.js';
 import { GAME_STATES } from '../game/GameStateMachine.js';
 import { useGameController } from '../hooks/useGameController.js';
@@ -9,6 +11,7 @@ import { useGameController } from '../hooks/useGameController.js';
 export function GameScreen({
   levelNumber,
   settings,
+  onSelectCar,
   onToggleMute,
   onWin,
   onNextLevel,
@@ -18,13 +21,16 @@ export function GameScreen({
   const canvasRef = useRef(null);
   const [hintLevel, setHintLevel] = useState(null);
   const [showHelp, setShowHelp] = useState(false);
+  const [showGarage, setShowGarage] = useState(false);
   const showHint = hintLevel === levelNumber;
+  const currentCar = getCarById(settings.carId);
 
   const { snapshot, error, start, pause, resume, retry, undo, clear } = useGameController(
     canvasRef,
     {
       levelNumber,
       muted: settings.muted,
+      carId: settings.carId,
       onWin,
     },
   );
@@ -102,6 +108,14 @@ export function GameScreen({
         </div>
 
         <div className="hud-top__right">
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setShowGarage(true)}
+            aria-label={`Change car (current: ${currentCar.name})`}
+          >
+            🚗 {currentCar.name}
+          </Button>
           {level?.hint && (
             <Button
               variant="ghost"
@@ -220,6 +234,22 @@ export function GameScreen({
             <div className="modal__actions">
               <Button variant="primary" onClick={() => setShowHelp(false)}>
                 Got it!
+              </Button>
+            </div>
+          </Modal>
+        )}
+
+        {showGarage && (
+          <Modal title="Garage — Choose Your Car">
+            <CarPicker
+              selectedCarId={currentCar.id}
+              onSelectCar={(id) => {
+                onSelectCar?.(id);
+              }}
+            />
+            <div className="modal__actions">
+              <Button variant="primary" onClick={() => setShowGarage(false)}>
+                Done
               </Button>
             </div>
           </Modal>

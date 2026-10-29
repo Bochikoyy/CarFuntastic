@@ -17,4 +17,3 @@ export function Toggle({ label, description, checked, onChange }) {
     </label>
   );
 }
-

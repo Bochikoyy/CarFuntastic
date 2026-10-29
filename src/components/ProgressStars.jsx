@@ -10,4 +10,3 @@ export function ProgressStars({ count = 0, max = 3, size = 'md' }) {
     </span>
   );
 }
-

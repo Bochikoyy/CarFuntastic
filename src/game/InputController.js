@@ -78,4 +78,3 @@ export class InputController {
     this.canvas.removeEventListener('lostpointercapture', this._onPointerCancel);
   }
 }
-
