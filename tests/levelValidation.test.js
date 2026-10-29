@@ -8,8 +8,8 @@ import {
 } from '../src/utils/validateLevel.js';
 
 describe('validateLevel', () => {
-  it('accepts all 10 shipped levels', () => {
-    expect(levels).toHaveLength(10);
+  it('accepts all 20 shipped levels', () => {
+    expect(levels).toHaveLength(20);
     levels.forEach((lvl, i) => {
       expect(lvl.number).toBe(i + 1);
       expect(validateLevel(lvl)).toEqual([]);

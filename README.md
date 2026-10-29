@@ -4,7 +4,7 @@ A browser-based 2D **draw-the-road physics puzzle game**. Draw a road, press Pla
 
 Built with **React + Vite + HTML5 Canvas + Matter.js**.
 
-> **Status:** v1.0 implementation complete — 10 handcrafted levels, full drawing-to-physics pipeline, progress persistence, and automated headless level tests.
+> **Status:** v1.1 implementation complete — 20 handcrafted levels, car garage / catalog selector, full drawing-to-physics pipeline, progress persistence, and automated headless level tests.
 
 ## Gameplay
 
@@ -13,9 +13,10 @@ Built with **React + Vite + HTML5 Canvas + Matter.js**.
 3. Press **Play** (`Space`) and the car drives automatically.
 4. Reach the flag to earn up to 3 ★ and unlock the next level. If you fail, press **Retry** (`R`) to reset the car while keeping your roads so you can tweak one piece at a time.
 
-## Features (v1.0)
+## Features
 
-- **10 handcrafted puzzle levels** teaching bridges, smooth slopes, distance planning, uphill ramps, spike hazards, ramp jumps, tight budgets, a periodic moving platform, precision shelves, and a multi-stage finale
+- **20 handcrafted puzzle levels** spanning beginner fundamentals up to master-tier spatial challenges (needle leaps, pendulum alleys, multi-lift timing, parabolic dives, and the grand gauntlet)
+- **Car Garage & Catalog**: Choose between 5 bespoke vehicles (Polestar 2 EV, Mustang Widebody, BMW M4 GT, BMW M6 GT3, and Altezza Widebody) with custom vector silhouettes and specs
 - **Mouse, pen, and touch drawing** via Pointer Events with live preview, endpoint snapping onto ledges, and Ramer–Douglas–Peucker path simplification
 - **Zero visual/physics drift** — the exact processed polyline rendered to Canvas is used to generate capsule-chain collision bodies (rotated segments + vertex circles so wheels never snag on joints)
 - **Undo (`Ctrl+Z`), Clear, Retry (`R`), and Pause (`Esc`)** controls with an explicit state machine (`loading`, `ready`, `drawing`, `running`, `paused`, `won`, `failed`)
@@ -85,6 +86,8 @@ Levels are plain data objects in `src/levels/`, kept separate from engine code:
 - [x] Drawing mechanic (Pointer Events, RDP simplification, capsule-chain bodies, undo/clear)
 - [x] Game state machine and win/fail rules
 - [x] Levels 1–10 designed, tuned, and verified by headless simulation
+- [x] Levels 11–20 enhanced brain-teaser levels with moving hazards and synchronized platforms
+- [x] 5-vehicle garage selector with custom silhouettes and handling specs
 - [x] Progress, stars, audio cues, and settings persistence
 - [x] QA test suite and production build
 

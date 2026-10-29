@@ -85,4 +85,3 @@ export function CarPicker({ selectedCarId, onSelectCar }) {
     </div>
   );
 }
-

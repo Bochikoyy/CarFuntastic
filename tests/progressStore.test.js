@@ -24,10 +24,14 @@ describe('progressStore and settingsStore', () => {
     const replay = store.recordCompletion(1, 1);
     expect(replay.starsByLevel[1]).toBe(2);
 
-    // Completing Level 10 caps unlockedLevel at 10.
+    // Completing Level 10 unlocks Level 11; completing Level 20 caps at 20.
     const after10 = store.recordCompletion(10, 3);
-    expect(after10.unlockedLevel).toBe(10);
+    expect(after10.unlockedLevel).toBe(11);
     expect(after10.starsByLevel[10]).toBe(3);
+
+    const after20 = store.recordCompletion(20, 3);
+    expect(after20.unlockedLevel).toBe(20);
+    expect(after20.starsByLevel[20]).toBe(3);
   });
 
   it('recovers gracefully from corrupted JSON in storage', () => {

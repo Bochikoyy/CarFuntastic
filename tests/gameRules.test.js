@@ -55,7 +55,7 @@ describe('DrawingController & PhysicsWorld integration', () => {
   });
 });
 
-describe('All 10 levels — headless playtest', () => {
+describe('All 20 levels — headless playtest', () => {
   it.each(levels.map((l) => [l.number, l.name, l]))(
     'Level %i (%s) fails without a road and is solvable with its reference drawing',
     (num, _name, level) => {
